@@ -368,46 +368,15 @@
 
   <!-- Counter QR Standee Modal for the Owner / Stalls -->
   <div class="modal-backdrop" id="qrModalBackdrop"></div>
-  <div class="qr-standee-modal" id="qrStandeeModal" role="dialog" aria-hidden="true">
+  <div class="qr-standee-modal qr-only-modal" id="qrStandeeModal" role="dialog" aria-hidden="true">
     <button class="modal-close-btn" id="closeQrModalBtn" aria-label="Close QR Standee">
       <i class="fa-solid fa-xmark"></i>
     </button>
-    <div class="qr-standee-paper" id="printableQrStandee">
-      <div class="standee-header">
-        <div class="standee-emblem">
-          <i class="fa-solid fa-dumbbell"></i>
-          <i class="fa-solid fa-leaf"></i>
-        </div>
-        <h2 class="standee-brand">Fitspoon</h2>
-        <span class="standee-motto">MADE FOR YOU GAIN</span>
-      </div>
-      
-      <div class="standee-callout">
-        <span class="standee-pill">📱 SCAN FOR DIGITAL MENU</span>
-        <h3>Scan to View Fresh Bowls & Prices</h3>
-        <p>Explore full ingredients, protein macros & custom chef dressings</p>
-      </div>
-
-      <div class="standee-qr-frame">
-        <img src="images/fitspoon_banner.jpg" alt="Fitspoon Counter QR" class="standee-qr-image" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Ffitspoon.com'">
-      </div>
-
-      <div class="standee-footer-tags">
-        <span>🥗 100% Fresh Daily</span>
-        <span>💪 20g-30g High Protein</span>
-        <span>⚡ Regular ₹99+</span>
-      </div>
-    </div>
-
-    <div class="standee-actions-bar">
-      <button class="btn-print-standee" onclick="window.print()">
-        <i class="fa-solid fa-print"></i>
-        <span>Print Counter Standee</span>
-      </button>
-      <button class="btn-close-standee" onclick="document.getElementById('closeQrModalBtn').click()">
-        Done
-      </button>
-    </div>
+    <img id="printableQrStandee" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Ffitspoon-vercel.vercel.app" alt="Fitspoon Counter QR" class="qr-bare-img">
+    <span class="qr-only-label">
+      <i class="fa-solid fa-qrcode" style="font-size:11px;color:#4caf50;"></i>
+      Scan to View Menu
+    </span>
   </div>
 
   <!-- Big Counter Token Screen Modal -->

@@ -1956,6 +1956,66 @@ a {
   cursor: pointer;
 }
 
+/* QR Only Modal (professional) */
+.qr-only-modal {
+  max-width: fit-content;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.28), 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: visible;
+  padding: 28px;
+  border: 1px solid rgba(46, 125, 50, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.qr-only-modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(46,125,50,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.qr-bare-img {
+  display: block;
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  border: 3px solid #1b5e20;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(27, 94, 32, 0.15);
+}
+
+.qr-only-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: #2e7d32;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qr-only-label::before,
+.qr-only-label::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #4caf50);
+}
+
+.qr-only-label::after {
+  background: linear-gradient(90deg, #4caf50, transparent);
+}
+
 /* Counter Token Screen */
 .token-card-box {
   padding: 36px 24px;
@@ -2149,5 +2209,297 @@ a {
   .standee-actions-bar,
   .modal-close-btn {
     display: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE BREATHING ROOM — Max 640px
+   ========================================================================== */
+@media (max-width: 639px) {
+
+  /* --- Body --- */
+  body {
+    font-size: 14px;
+  }
+
+  /* --- Header --- */
+  .header-container {
+    height: 58px;
+  }
+
+  .brand-badge-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brand-tagline {
+    font-size: 10px;
+  }
+
+  .lang-toggle-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .qr-standee-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .tray-trigger-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* --- Hero --- */
+  .hero-section {
+    padding: 14px 0 10px;
+  }
+
+  .hero-banner-card {
+    padding: 20px 16px;
+    gap: 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-pill-badge {
+    font-size: 10.5px;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+
+  .hero-heading {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .hero-subheading {
+    font-size: 13px;
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+
+  .pricing-tier-bar {
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+
+  .price-pill {
+    padding: 8px 10px;
+    min-width: 90px;
+    flex: 1 1 90px;
+    border-radius: 10px;
+  }
+
+  .price-pill .tier-name {
+    font-size: 10.5px;
+  }
+
+  .price-pill .tier-price {
+    font-size: 15px;
+  }
+
+  .price-pill .badge-pop {
+    font-size: 8.5px;
+  }
+
+  .hero-meta-strip {
+    gap: 10px;
+    font-size: 11.5px;
+  }
+
+  .hero-brand-banner-img {
+    max-height: 180px;
+  }
+
+  /* --- Menu Controls --- */
+  .menu-control-section {
+    padding: 12px 0 6px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .subtitle-tag {
+    font-size: 10.5px;
+  }
+
+  .search-box input {
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .filter-chip {
+    font-size: 12px;
+    padding: 6px 11px;
+    gap: 5px;
+  }
+
+  .founder-recommendation-box {
+    font-size: 12px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* --- Product Cards --- */
+  .products-section {
+    padding: 12px 0 24px;
+  }
+
+  .products-grid {
+    gap: 14px;
+  }
+
+  .card-content {
+    padding: 14px;
+  }
+
+  .bowl-name-en {
+    font-size: 15px;
+  }
+
+  .bowl-name-ml {
+    font-size: 11.5px;
+  }
+
+  .card-macros-strip {
+    font-size: 11px;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .ingredients-section-label {
+    font-size: 10.5px;
+  }
+
+  .ingredients-pills-wrap {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .ingredient-pill {
+    font-size: 11px;
+    padding: 2px 7px;
+  }
+
+  .dressing-box {
+    font-size: 11.5px;
+    padding: 6px 8px;
+    margin-bottom: 10px;
+  }
+
+  .benefit-quote {
+    font-size: 11.5px;
+    padding: 5px 8px;
+    margin-bottom: 12px;
+  }
+
+  .tier-btn {
+    padding: 5px 2px;
+  }
+
+  .tier-btn-label {
+    font-size: 9.5px;
+  }
+
+  .tier-btn-price {
+    font-size: 12.5px;
+  }
+
+  .btn-add-tray {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+
+  /* --- Macro Calculator --- */
+  .macro-calculator-section {
+    padding: 16px 0;
+  }
+
+  .calc-card {
+    padding: 20px 14px;
+  }
+
+  .calc-header h3 {
+    font-size: 19px;
+  }
+
+  .calc-header p {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .form-group input,
+  .form-group select {
+    height: 42px;
+    font-size: 13.5px;
+  }
+
+  .calc-target-value {
+    font-size: 22px;
+  }
+
+  /* --- About Section --- */
+  .about-section {
+    padding: 16px 0 24px;
+  }
+
+  .about-card {
+    padding: 20px 14px;
+  }
+
+  .about-text h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .about-quote {
+    font-size: 13.5px;
+    padding: 8px 12px;
+  }
+
+  .about-text p {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .counter-highlight-box {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .highlight-header h4 {
+    font-size: 17px;
+  }
+
+  .btn-whatsapp-order {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* --- Footer --- */
+  .site-footer {
+    padding: 28px 0 16px;
+  }
+
+  .footer-container {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .footer-desc {
+    font-size: 12.5px;
+  }
+
+  /* --- Tray Drawer on Mobile --- */
+  .tray-drawer {
+    max-width: 100%;
   }
 }

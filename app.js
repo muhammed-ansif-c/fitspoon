@@ -3,8 +3,8 @@
    Interactive Digital Menu, QR Ordering & Macro System Logic
    ========================================================================== */
 
-// Complete Bowls Dataset extracted from screenshots
-const BOWL_DATA = [
+// ── Default Bowl Dataset (fallback if no admin edits saved) ──────────────
+const DEFAULT_BOWL_DATA = [
   {
     id: "classic-protein-bowl",
     number: 1,
@@ -255,6 +255,205 @@ const BOWL_DATA = [
   }
 ];
 
+// ── Live Bowl Data: load from admin localStorage if available ─────────────
+const MENU_STORAGE_KEY     = "fitspoon_menu_data";
+const SITE_SETTINGS_KEY    = "fitspoon_site_settings";
+
+let BOWL_DATA;
+try {
+  const saved = localStorage.getItem(MENU_STORAGE_KEY);
+  BOWL_DATA = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_BOWL_DATA));
+} catch(e) {
+  BOWL_DATA = JSON.parse(JSON.stringify(DEFAULT_BOWL_DATA));
+}
+
+// ── Default Site Settings ─────────────────────────────────────────────────
+const DEFAULT_SITE_SETTINGS = {
+  // Brand
+  brandName:        "Fitspoon",
+  brandTagline:     "Made for you gain",
+  // Announcement
+  announcementText: "Counter Live: Fresh Bowls Being Made Fresh Daily",
+  morningHours:     "6:30 AM - 11:00 AM",
+  eveningHours:     "4:30 PM - 9:30 PM",
+  // Hero
+  heroBadge:        "Clean Protein • Real Food • Zero Junk",
+  heroHeading:      "Proper Protein Meals, Not Just a Simple Salad.",
+  heroSubheading:   "Crafted with farm-fresh moong sprouts, slow-cooked chickpeas, roasted sweet potatoes, boiled country eggs, high-protein soya chunks, and zesty fresh fruit vinaigrettes.",
+  heroBannerImage:  "images/fitspoon_banner.jpg",
+  heroRegularLabel: "Regular Bowl",
+  heroRegularPrice: "₹99 – ₹129",
+  heroHighLabel:    "High Protein Bowl",
+  heroHighPrice:    "₹149 – ₹179",
+  heroHighBadge:    "Most Popular",
+  heroPremiumLabel: "Premium Bowl",
+  heroPremiumPrice: "₹199 – ₹229",
+  meta1:            "100% Fresh Daily",
+  meta2:            "High Satiety & Energy",
+  meta3:            "Zero Artificial Flavors",
+  founderTip:       "For morning: Try Classic Power or Sweet Potato Gain Bowl. For evening/gym recharge: Choose Soya Muscle or Spicy Protein Bowl!",
+  // About
+  aboutSubtitle:    "THE FITSPOON PROMISE",
+  aboutHeading:     "Why Protein Bowls, Not Regular Salads?",
+  aboutQuote:       "\u201cഇങ്ങനെ ചെയ്താൽ customer-ന് healthy salad മാത്രമല്ല, proper protein meal എന്ന feeling കിട്ടും.\u201d",
+  aboutBody:        "Most salads leave you hungry after an hour. At Fitspoon, every single bowl is engineered with complex slow-burning carbohydrates (sweet potato, boiled chickpeas), high bioavailability proteins (farm-fresh eggs, wholesome sprouted moong, premium soya chunks), and micronutrient-dense tropical fruits with raw digestive spices.",
+  bullet1Title:     "Fresh Handcrafted Dressings",
+  bullet1Desc:      "Real lemon juice, garden mint, crushed black pepper, pink rock salt & chilli flakes. No mayonnaise or palm oil dressings.",
+  bullet2Title:     "Overnight Soaked & Lightly Steamed",
+  bullet2Desc:      "Chickpeas soaked overnight and gently steamed with moong sprouts for smooth digestion and maximum nutrient absorption.",
+  counterHeading:   "Counter Service",
+  counterDesc:      "Order directly at our counter or tap below to send your order directly to our chef on WhatsApp for zero waiting time!",
+  // Footer
+  footerDesc:       "Real nutrition for the everyday athlete and fitness enthusiast. No artificial preservatives, pure wholesome energy.",
+  footerCopyright:  "© 2026 Fitspoon • Made for you gain. Scan & Dine QR Menu.",
+  footerTagline:    "Freshly Crafted For You",
+  footerMorning:    "6:30 AM – 11:00 AM (Breakfast & Pre/Post Workout)",
+  footerEvening:    "4:30 PM – 9:30 PM (Evening Recharge & Dinner)",
+  priceRegular:     "₹99 – ₹129",
+  priceHigh:        "₹149 – ₹179",
+  pricePremium:     "₹199 – ₹229",
+  // Contact
+  whatsapp:         "917561857049",
+  whatsappDisplay:  "+91 75618 57049",
+  whatsappGreeting: "Hi Fitspoon! I scanned your QR code and want to order a bowl",
+  qrUrl:            "https://fitspoon-vercel.vercel.app",
+  qrLabel:          "Scan to View Menu",
+};
+
+// ── Load & Apply Site Settings ────────────────────────────────────────────
+function getSiteSettings() {
+  try {
+    const saved = localStorage.getItem(SITE_SETTINGS_KEY);
+    if (saved) return Object.assign({}, DEFAULT_SITE_SETTINGS, JSON.parse(saved));
+  } catch(e) {}
+  return Object.assign({}, DEFAULT_SITE_SETTINGS);
+}
+
+function applySiteSettings() {
+  const s = getSiteSettings();
+
+  // Helper: set textContent if el exists
+  const setText = (sel, val) => {
+    const el = document.querySelector(sel);
+    if (el && val !== undefined) el.textContent = val;
+  };
+  const setAttr = (sel, attr, val) => {
+    const el = document.querySelector(sel);
+    if (el && val !== undefined) el.setAttribute(attr, val);
+  };
+  const setDataAttr = (sel, val) => {
+    const el = document.querySelector(sel);
+    if (el && val !== undefined) {
+      el.setAttribute("data-en", val);
+      el.textContent = val;
+    }
+  };
+
+  // Brand
+  document.querySelectorAll(".brand-name").forEach(el => el.textContent = s.brandName);
+  document.querySelectorAll(".brand-tagline").forEach(el => el.textContent = s.brandTagline);
+  document.title = s.brandName + " | Healthy Protein Bowl Menu";
+
+  // Announcement
+  const announcEl = document.querySelector(".status-text");
+  if (announcEl) { announcEl.setAttribute("data-en", s.announcementText); announcEl.textContent = s.announcementText; }
+  const timingSpans = document.querySelectorAll(".announcement-timing span:not(.timing-divider)");
+  if (timingSpans[0]) timingSpans[0].innerHTML = `<i class="fa-solid fa-sun text-warning"></i> Morning: ${s.morningHours}`;
+  if (timingSpans[1]) timingSpans[1].innerHTML = `<i class="fa-solid fa-moon text-accent"></i> Evening: ${s.eveningHours}`;
+
+  // Hero
+  const heroBadgeEl = document.querySelector(".hero-pill-badge span");
+  if (heroBadgeEl) { heroBadgeEl.setAttribute("data-en", s.heroBadge); heroBadgeEl.textContent = s.heroBadge; }
+  const heroH2 = document.querySelector(".hero-heading");
+  if (heroH2) { heroH2.setAttribute("data-en", s.heroHeading); heroH2.textContent = s.heroHeading; }
+  const heroP = document.querySelector(".hero-subheading");
+  if (heroP) { heroP.setAttribute("data-en", s.heroSubheading); heroP.textContent = s.heroSubheading; }
+  const heroBannerImg = document.querySelector(".hero-brand-banner-img");
+  if (heroBannerImg) heroBannerImg.src = s.heroBannerImage;
+
+  // Hero pricing pills
+  const tierNames = document.querySelectorAll(".price-pill .tier-name");
+  const tierPrices = document.querySelectorAll(".price-pill .tier-price");
+  const badgePop = document.querySelector(".price-pill .badge-pop");
+  if (tierNames[0]) { tierNames[0].setAttribute("data-en", s.heroRegularLabel); tierNames[0].textContent = s.heroRegularLabel; }
+  if (tierPrices[0]) tierPrices[0].textContent = s.heroRegularPrice;
+  if (tierNames[1]) { tierNames[1].setAttribute("data-en", s.heroHighLabel); tierNames[1].textContent = s.heroHighLabel; }
+  if (tierPrices[1]) tierPrices[1].textContent = s.heroHighPrice;
+  if (badgePop) { badgePop.setAttribute("data-en", s.heroHighBadge); badgePop.textContent = s.heroHighBadge; }
+  if (tierNames[2]) { tierNames[2].setAttribute("data-en", s.heroPremiumLabel); tierNames[2].textContent = s.heroPremiumLabel; }
+  if (tierPrices[2]) tierPrices[2].textContent = s.heroPremiumPrice;
+
+  // Meta strip
+  const metaSpans = document.querySelectorAll(".hero-meta-strip .meta-item span");
+  if (metaSpans[0]) { metaSpans[0].setAttribute("data-en", s.meta1); metaSpans[0].textContent = s.meta1; }
+  if (metaSpans[1]) { metaSpans[1].setAttribute("data-en", s.meta2); metaSpans[1].textContent = s.meta2; }
+  if (metaSpans[2]) { metaSpans[2].setAttribute("data-en", s.meta3); metaSpans[2].textContent = s.meta3; }
+
+  // Founder tip
+  const tipEl = document.getElementById("timingTipText");
+  if (tipEl) { tipEl.setAttribute("data-en", s.founderTip); tipEl.textContent = s.founderTip; }
+
+  // About
+  const aboutSubEl = document.querySelector(".about-section .subtitle-tag");
+  if (aboutSubEl) { aboutSubEl.setAttribute("data-en", s.aboutSubtitle); aboutSubEl.textContent = s.aboutSubtitle; }
+  const aboutH3 = document.querySelector(".about-text h3");
+  if (aboutH3) { aboutH3.setAttribute("data-en", s.aboutHeading); aboutH3.textContent = s.aboutHeading; }
+  const aboutQuoteEl = document.querySelector(".about-quote");
+  if (aboutQuoteEl) { aboutQuoteEl.setAttribute("data-en", s.aboutQuote); aboutQuoteEl.textContent = s.aboutQuote; }
+  const aboutBodyEl = document.querySelector(".about-text > p:not(.about-quote)");
+  if (aboutBodyEl) { aboutBodyEl.setAttribute("data-en", s.aboutBody); aboutBodyEl.textContent = s.aboutBody; }
+
+  // About bullets
+  const bulletStrongs = document.querySelectorAll(".bullet-item strong");
+  const bulletSpans   = document.querySelectorAll(".bullet-item span");
+  if (bulletStrongs[0]) { bulletStrongs[0].setAttribute("data-en", s.bullet1Title); bulletStrongs[0].textContent = s.bullet1Title; }
+  if (bulletSpans[0])   { bulletSpans[0].setAttribute("data-en", s.bullet1Desc);   bulletSpans[0].textContent = s.bullet1Desc; }
+  if (bulletStrongs[1]) { bulletStrongs[1].setAttribute("data-en", s.bullet2Title); bulletStrongs[1].textContent = s.bullet2Title; }
+  if (bulletSpans[1])   { bulletSpans[1].setAttribute("data-en", s.bullet2Desc);   bulletSpans[1].textContent = s.bullet2Desc; }
+
+  // Counter service box
+  const counterH4 = document.querySelector(".counter-highlight-box h4");
+  if (counterH4) { counterH4.setAttribute("data-en", s.counterHeading); counterH4.textContent = s.counterHeading; }
+  const counterP = document.querySelector(".counter-highlight-box > p");
+  if (counterP) { counterP.setAttribute("data-en", s.counterDesc); counterP.textContent = s.counterDesc; }
+
+  // Footer
+  const footerDescEl = document.querySelector(".footer-desc");
+  if (footerDescEl) { footerDescEl.setAttribute("data-en", s.footerDesc); footerDescEl.textContent = s.footerDesc; }
+  const footerCopyEl = document.querySelector(".footer-bottom-inner p:first-child");
+  if (footerCopyEl) footerCopyEl.textContent = s.footerCopyright;
+  const footerTagEl = document.querySelector(".tag-powered");
+  if (footerTagEl) footerTagEl.textContent = s.footerTagline;
+
+  // Footer timings
+  const footerTimingLis = document.querySelectorAll(".footer-timings-col li");
+  if (footerTimingLis[0]) footerTimingLis[0].innerHTML = `<strong>Morning:</strong> ${s.footerMorning}`;
+  if (footerTimingLis[1]) footerTimingLis[1].innerHTML = `<strong>Evening:</strong> ${s.footerEvening}`;
+  if (footerTimingLis[2]) footerTimingLis[2].innerHTML = `<a href="https://wa.me/${s.whatsapp}" target="_blank" style="color:#4ade80;font-weight:700;display:inline-flex;align-items:center;gap:6px;"><i class="fa-brands fa-whatsapp"></i> ${s.whatsappDisplay}</a>`;
+
+  // Footer pricing
+  const footerPriceLis = document.querySelectorAll(".footer-prices-col li");
+  if (footerPriceLis[0]) footerPriceLis[0].innerHTML = `<span class="bullet-dot bg-regular"></span> <strong>Regular:</strong> ${s.priceRegular}`;
+  if (footerPriceLis[1]) footerPriceLis[1].innerHTML = `<span class="bullet-dot bg-high"></span> <strong>High Protein:</strong> ${s.priceHigh}`;
+  if (footerPriceLis[2]) footerPriceLis[2].innerHTML = `<span class="bullet-dot bg-prem"></span> <strong>Premium:</strong> ${s.pricePremium}`;
+
+  // WhatsApp links
+  const waLink = document.querySelector(".btn-whatsapp-order");
+  if (waLink) {
+    waLink.href = `https://wa.me/${s.whatsapp}?text=${encodeURIComponent(s.whatsappGreeting)}`;
+    const waSpan = waLink.querySelector("span");
+    if (waSpan) { waSpan.setAttribute("data-en", `Order on WhatsApp (${s.whatsappDisplay})`); waSpan.textContent = `Order on WhatsApp (${s.whatsappDisplay})`; }
+  }
+
+  // QR code
+  const qrImg = document.getElementById("printableQrStandee");
+  if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(s.qrUrl)}`;
+  const qrLabelEl = document.querySelector(".qr-only-label");
+  if (qrLabelEl) {
+    qrLabelEl.innerHTML = `<i class="fa-solid fa-qrcode" style="font-size:11px;color:#4caf50;"></i> ${s.qrLabel}`;
+  }
+}
+
 // Application State
 const state = {
   currentLang: "en", // 'en' | 'ml'
@@ -334,6 +533,7 @@ const toastMessage = document.getElementById("toastMessage");
 // Initialization
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+  applySiteSettings();
   renderBowls();
   updateTrayUI();
   setupEventListeners();
@@ -761,7 +961,7 @@ function sendWhatsAppOrder() {
   message += `*Pickup:* Counter Pickup / Fresh Order%0A%0A`;
   message += `Please prepare my fresh bowl! 💪🥗`;
 
-  const waUrl = `https://wa.me/917561857049?text=${message}`;
+  const waUrl = `https://wa.me/${getSiteSettings().whatsapp}?text=${message}`;
   window.open(waUrl, "_blank");
 }
 
