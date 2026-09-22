@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Fitspoon | Healthy Protein Bowl Menu & Counter QR Showcase</title>
+  <meta name="description" content="Fitspoon - Made for you gain. Fresh high-protein breakfast and evening bowls crafted with real ingredients, boiled eggs, soya, sprouts, sweet potatoes, and zesty fresh dressings.">
+  <meta name="theme-color" content="#1b5e20">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for crisp UI icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-lang="en">
+  <!-- Top Announce Bar -->
+  <div class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span class="status-text" data-en="Counter Live: Fresh Bowls Being Made Fresh Daily" data-ml="ലൈവ് കൗണ്ടർ: ഫ്രഷ് പ്രോട്ടീൻ ബൗളുകൾ തത്സമയം തയ്യാറാക്കുന്നു">Counter Live: Fresh Bowls Being Made Fresh Daily</span>
+      </div>
+      <div class="announcement-timing">
+        <span><i class="fa-solid fa-sun text-warning"></i> Morning: 6:30 AM - 11:00 AM</span>
+        <span class="timing-divider">|</span>
+        <span><i class="fa-solid fa-moon text-accent"></i> Evening: 4:30 PM - 9:30 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="mainHeader">
+    <div class="container header-container">
+      <div class="brand-block">
+        <div class="brand-logo-wrap">
+          <div class="brand-badge-icon">
+            <i class="fa-solid fa-dumbbell"></i>
+            <i class="fa-solid fa-leaf leaf-accent"></i>
+          </div>
+          <div class="brand-titles">
+            <h1 class="brand-name">Fitspoon</h1>
+            <span class="brand-tagline">Made for you gain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Toggle language between English and Malayalam">
+          <i class="fa-solid fa-language"></i>
+          <span class="current-lang-text" id="langLabel">മലയാളം</span>
+        </button>
+
+        <!-- QR Standee Modal Trigger -->
+        <button class="qr-standee-btn" id="openQrModalBtn" title="Counter QR Standee">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="btn-text-desktop">Counter QR</span>
+        </button>
+
+        <!-- Cart / Tray Trigger -->
+        <button class="tray-trigger-btn" id="openTrayBtn" aria-label="Open your selected bowls tray">
+          <div class="tray-icon-box">
+            <i class="fa-solid fa-bowl-food"></i>
+            <span class="tray-count-badge" id="trayCountBadge">0</span>
+          </div>
+          <span class="tray-label-desktop">My Tray</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-banner-card">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <i class="fa-solid fa-seedling"></i>
+            <span data-en="Clean Protein • Real Food • Zero Junk" data-ml="യഥാർത്ഥ പ്രോട്ടീൻ • ക്ലീൻ ഫുഡ് • സീറോ ജങ്ക്">Clean Protein • Real Food • Zero Junk</span>
+          </div>
+          <h2 class="hero-heading" data-en="Proper Protein Meals, Not Just a Simple Salad." data-ml="വെറും സാലഡ് മാത്രമല്ല, ശരീരത്തിന് വേണ്ട യഥാർത്ഥ പ്രോട്ടീൻ മീൽ!">
+            Proper Protein Meals, Not Just a Simple Salad.
+          </h2>
+          <p class="hero-subheading" data-en="Crafted with farm-fresh moong sprouts, slow-cooked chickpeas, roasted sweet potatoes, boiled country eggs, high-protein soya chunks, and zesty fresh fruit vinaigrettes." data-ml="വേവിച്ച മുട്ട, മുളപ്പിച്ച ചെറുപയർ, കടല, സ്വീറ്റ് പൊട്ടറ്റോ, സോയാ ചങ്ക്സ്, ഫ്രഷ് പഴങ്ങൾ എന്നിവ ചേർത്ത പോഷക സമൃദ്ധമായ ബൗളുകൾ.">
+            Crafted with farm-fresh moong sprouts, slow-cooked chickpeas, roasted sweet potatoes, boiled country eggs, high-protein soya chunks, and zesty fresh fruit vinaigrettes.
+          </p>
+
+          <!-- Quick Price Highlights -->
+          <div class="pricing-tier-bar">
+            <div class="price-pill tier-regular">
+              <span class="tier-name" data-en="Regular Bowl" data-ml="റെഗുലർ ബൗൾ">Regular Bowl</span>
+              <span class="tier-price">₹99 – ₹129</span>
+            </div>
+            <div class="price-pill tier-high-protein featured-pill">
+              <div class="badge-pop" data-en="Most Popular" data-ml="കൂടുതൽ പേർ ഇഷ്ടപ്പെടുന്നത്">Most Popular</div>
+              <span class="tier-name" data-en="High Protein Bowl" data-ml="ഹൈ പ്രോട്ടീൻ ബൗൾ">High Protein Bowl</span>
+              <span class="tier-price">₹149 – ₹179</span>
+            </div>
+            <div class="price-pill tier-premium">
+              <span class="tier-name" data-en="Premium Bowl" data-ml="പ്രീമിയം ബൗൾ">Premium Bowl</span>
+              <span class="tier-price">₹199 – ₹229</span>
+            </div>
+          </div>
+
+          <div class="hero-meta-strip">
+            <div class="meta-item">
+              <i class="fa-solid fa-circle-check text-success"></i>
+              <span data-en="100% Fresh Daily" data-ml="100% ദിവസേന ഫ്രഷ്">100% Fresh Daily</span>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-fire-flame-curved text-warning"></i>
+              <span data-en="High Satiety & Energy" data-ml="കൂടുതൽ ഉന്മേഷവും ഊർജ്ജവും">High Satiety & Energy</span>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-shield-heart text-danger"></i>
+              <span data-en="Zero Artificial Flavors" data-ml="കൃത്രിമ ചേരുവകൾ ഇല്ല">Zero Artificial Flavors</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media-wrap">
+          <img src="images/fitspoon_banner.jpg" alt="Fitspoon Banner Made for you gain" class="hero-brand-banner-img" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Time-of-Day Bar -->
+  <section class="menu-control-section" id="menuSection">
+    <div class="container">
+      <div class="control-header">
+        <div class="section-title-wrap">
+          <span class="subtitle-tag" data-en="HANDCRAFTED SIGNATURES" data-ml="ഞങ്ങളുടെ പ്രധാന ബൗളുകൾ">HANDCRAFTED SIGNATURES</span>
+          <h3 class="section-title" data-en="Explore Fitspoon Bowls" data-ml="ഫിറ്റ്സ്പൂൺ പ്രോട്ടീൻ ബൗളുകൾ">Explore Fitspoon Bowls</h3>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search bowl or ingredient (e.g. egg, soya, sweet potato)..." data-en-ph="Search bowl or ingredient (e.g. egg, soya, sweet potato)..." data-ml-ph="ബൗളുകൾ അല്ലെങ്കിൽ ചേരുവകൾ തിരയുക...">
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="category-filters" id="categoryFilters" role="tablist">
+        <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
+          <i class="fa-solid fa-border-all"></i>
+          <span data-en="All Bowls (7)" data-ml="എല്ലാ ബൗളുകളും (7)">All Bowls (7)</span>
+        </button>
+        <button class="filter-chip" data-filter="morning" role="tab">
+          <i class="fa-solid fa-sun"></i>
+          <span data-en="🌅 Morning Fuel (Breakfast)" data-ml="🌅 പ്രഭാത ഭക്ഷണം (Morning)">🌅 Morning Fuel (Breakfast)</span>
+        </button>
+        <button class="filter-chip" data-filter="evening" role="tab">
+          <i class="fa-solid fa-dumbbell"></i>
+          <span data-en="🌆 Evening Muscle (Post-Workout)" data-ml="🌆 വൈകുന്നേരത്തെ മീൽ (Evening)">🌆 Evening Muscle (Post-Workout)</span>
+        </button>
+        <button class="filter-chip" data-filter="veg" role="tab">
+          <i class="fa-solid fa-leaf"></i>
+          <span data-en="🌱 100% Pure Veg" data-ml="🌱 100% വെജിറ്റേറിയൻ">🌱 100% Pure Veg</span>
+        </button>
+        <button class="filter-chip" data-filter="egg" role="tab">
+          <i class="fa-solid fa-egg"></i>
+          <span data-en="🥚 Boiled Egg Specials" data-ml="🥚 മുട്ട ചേർത്തവ">🥚 Boiled Egg Specials</span>
+        </button>
+        <button class="filter-chip" data-filter="fruit" role="tab">
+          <i class="fa-solid fa-apple-whole"></i>
+          <span data-en="🍍 Fruit & Fresh Zest" data-ml="🍍 ഫ്രൂട്ട് & സിട്രസ്">🍍 Fruit & Fresh Zest</span>
+        </button>
+      </div>
+
+      <!-- Time of day founder recommendation banner -->
+      <div class="founder-recommendation-box">
+        <div class="founder-icon"><i class="fa-solid fa-lightbulb"></i></div>
+        <div class="founder-content">
+          <strong data-en="Founder's Recommendation:" data-ml="കൗണ്ടർ സ്പെഷ്യൽ നിർദ്ദേശം:">Founder's Recommendation:</strong>
+          <span id="timingTipText" data-en="For morning: Try Classic Power or Sweet Potato Gain Bowl. For evening/gym recharge: Choose Soya Muscle or Spicy Protein Bowl!" data-ml="രാവിലെ: ക്ലാസിക് പവർ അല്ലെങ്കിൽ സ്വീറ്റ് പൊട്ടറ്റോ ഗെയിൻ ബൗൾ തിരഞ്ഞെടുക്കാം. വൈകുന്നേരം ജിം കഴിഞ്ഞ്: സോയാ മസിൽ അല്ലെങ്കിൽ സ്പൈസി ബൗൾ ഉത്തമം!">
+            For morning: Try Classic Power or Sweet Potato Gain Bowl. For evening/gym recharge: Choose Soya Muscle or Spicy Protein Bowl!
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid Section -->
+  <main class="products-section">
+    <div class="container">
+      <div class="products-grid" id="productsGrid">
+        <!-- Javascript dynamically renders all 7 bowls here with rich interactive controls -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Macro & Nutrition Value Calculator -->
+  <section class="macro-calculator-section">
+    <div class="container">
+      <div class="calc-card">
+        <div class="calc-header">
+          <div class="calc-badge">
+            <i class="fa-solid fa-calculator"></i>
+            <span data-en="Smart Fuel Assistant" data-ml="സ്മാർട്ട് ഫിറ്റ്നസ് കാൽക്കുലേറ്റർ">Smart Fuel Assistant</span>
+          </div>
+          <h3 data-en="Calculate Your Daily Protein Target" data-ml="നിങ്ങളുടെ ദൈനംദിന പ്രോട്ടീൻ ലക്ഷ്യം കണക്കാക്കൂ">Calculate Your Daily Protein Target</h3>
+          <p data-en="Enter your body weight & fitness goal to see which Fitspoon bowls meet your daily requirement." data-ml="നിങ്ങളുടെ ഭാരവും വ്യായാമ ലക്ഷ്യവും നൽകി അനുയോജ്യമായ ബൗളുകൾ കണ്ടെത്തൂ.">
+            Enter your body weight & fitness goal to see which Fitspoon bowls meet your daily requirement.
+          </p>
+        </div>
+
+        <div class="calc-form-grid">
+          <div class="form-group">
+            <label for="userWeight" data-en="Your Weight (kg)" data-ml="നിങ്ങളുടെ ഭാരം (kg)">Your Weight (kg)</label>
+            <input type="number" id="userWeight" value="65" min="30" max="180">
+          </div>
+          <div class="form-group">
+            <label for="fitnessGoal" data-en="Fitness Goal" data-ml="വ്യായാമ ലക്ഷ്യം">Fitness Goal</label>
+            <select id="fitnessGoal">
+              <option value="maintenance" data-en="Stay Fit & Energetic (1.2g / kg)" data-ml="ആരോഗ്യം നിലനിർത്താൻ (1.2g / kg)">Stay Fit & Energetic (1.2g / kg)</option>
+              <option value="fat_loss" data-en="Fat Loss & Lean Muscle (1.6g / kg)" data-ml="തടി കുറയ്ക്കാനും ഫിറ്റ്‌നസിനും (1.6g / kg)">Fat Loss & Lean Muscle (1.6g / kg)</option>
+              <option value="muscle_gain" selected data-en="Muscle Gain & Gym Heavy (2.0g / kg)" data-ml="മസിൽ ബിൽഡിംഗ് & ജിം (2.0g / kg)">Muscle Gain & Gym Heavy (2.0g / kg)</option>
+            </select>
+          </div>
+          <div class="form-group calc-result-box">
+            <span class="calc-target-label" data-en="Recommended Daily Protein" data-ml="ദിവസേന ആവശ്യമായ പ്രോട്ടീൻ">Recommended Daily Protein</span>
+            <div class="calc-target-value"><span id="targetProteinVal">130</span><span class="unit">g / day</span></div>
+            <span class="calc-target-hint" id="calcHintText">1 Fitspoon High-Protein Bowl gives ~28g-32g clean bioavailable protein!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Startup Philosophy Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-card">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="subtitle-tag" data-en="THE FITSPOON PROMISE" data-ml="ഫിറ്റ്സ്പൂൺ തത്വം">THE FITSPOON PROMISE</span>
+            <h3 data-en="Why Protein Bowls, Not Regular Salads?" data-ml="എന്തുകൊണ്ട് വെറും സാലഡ് അല്ല, പ്രോട്ടീൻ ബൗൾ?">Why Protein Bowls, Not Regular Salads?</h3>
+            <p class="about-quote" data-en="&ldquo;ഇങ്ങനെ ചെയ്താൽ customer-ന് healthy salad മാത്രമല്ല, proper protein meal എന്ന feeling കിട്ടും.&rdquo;" data-ml="&ldquo;ഇങ്ങനെ ചെയ്താൽ customer-ന് healthy salad മാത്രമല്ല, proper protein meal എന്ന feeling കിട്ടും.&rdquo;">
+              &ldquo;ഇങ്ങനെ ചെയ്താൽ customer-ന് healthy salad മാത്രമല്ല, proper protein meal എന്ന feeling കിട്ടും.&rdquo;
+            </p>
+            <p data-en="Most salads leave you hungry after an hour. At Fitspoon, every single bowl is engineered with complex slow-burning carbohydrates (sweet potato, boiled chickpeas), high bioavailability proteins (farm-fresh eggs, wholesome sprouted moong, premium soya chunks), and micronutrient-dense tropical fruits with raw digestive spices." data-ml="സാധാരണ സാലഡുകൾ കഴിച്ചാൽ ഉടൻ വിശക്കും. എന്നാൽ ഫിറ്റ്സ്പൂണിൽ മുട്ട, ചെറുപയർ മുളപ്പിച്ചത്, കടല, മധുരക്കിഴങ്ങ്, സോയ എന്നിവ കൃത്യമായ അളവിൽ ചേർക്കുന്നതിനാൽ വയറു നിറയുകയും ശരീരത്തിന് ആവശ്യമായ പ്രോട്ടീൻ ഉറപ്പാക്കുകയും ചെയ്യുന്നു.">
+              Most salads leave you hungry after an hour. At Fitspoon, every single bowl is engineered with complex slow-burning carbohydrates (sweet potato, boiled chickpeas), high bioavailability proteins (farm-fresh eggs, wholesome sprouted moong, premium soya chunks), and micronutrient-dense tropical fruits with raw digestive spices.
+            </p>
+
+            <div class="about-bullets">
+              <div class="bullet-item">
+                <i class="fa-solid fa-mortar-pestle"></i>
+                <div>
+                  <strong data-en="Fresh Handcrafted Dressings" data-ml="സ്വാഭാവിക ഡ്രസ്സിംഗുകൾ">Fresh Handcrafted Dressings</strong>
+                  <span data-en="Real lemon juice, garden mint, crushed black pepper, pink rock salt & chilli flakes. No mayonnaise or palm oil dressings." data-ml="ഫ്രഷ് നാരങ്ങാനീര്, പുതിന, കുരുമുളക്, ഇന്തുപ്പ്, ചില്ലി ഫ്ലേക്സ്. മയോണൈസ് ഇല്ല.">Real lemon juice, garden mint, crushed black pepper, pink rock salt & chilli flakes.</span>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <div>
+                  <strong data-en="Overnight Soaked & Lightly Steamed" data-ml="കുതിർത്തു വേവിച്ച ചേരുവകൾ">Overnight Soaked & Lightly Steamed</strong>
+                  <span data-en="Chickpeas soaked overnight and gently steamed with moong sprouts for smooth digestion and maximum nutrient absorption." data-ml="കടല രാത്രി കുതിർത്ത് രാവിലെ വേവിക്കുന്നു. മുളപ്പിച്ച പയർ ചെറുതായി സ്റ്റീം ചെയ്യുന്നു.">Chickpeas soaked overnight and gently steamed for smooth digestion.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-card-side">
+            <div class="counter-highlight-box">
+              <div class="highlight-header">
+                <i class="fa-solid fa-store"></i>
+                <h4 data-en="Counter Service" data-ml="കൗണ്ടർ ഓർഡറിംഗ്">Counter Service</h4>
+              </div>
+              <p data-en="Order directly at our counter or tap below to send your order directly to our chef on WhatsApp for zero waiting time!" data-ml="കൗണ്ടറിൽ നിന്ന് നേരിട്ടോ അല്ലെങ്കിൽ വാട്സാപ്പിലൂടെയോ ഉടൻ ഓർഡർ ചെയ്യാം!">
+                Order directly at our counter or tap below to send your order directly to our chef on WhatsApp for zero waiting time!
+              </p>
+              <div class="counter-contact-actions">
+                <a href="https://wa.me/917561857049?text=Hi%20Fitspoon!%20I%20scanned%20your%20QR%20code%20and%20want%20to%20order%20a%20bowl" target="_blank" rel="noopener" class="btn-whatsapp-order">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span data-en="Order on WhatsApp (+91 75618 57049)" data-ml="വാട്സാപ്പിൽ ഓർഡർ ചെയ്യൂ (+91 75618 57049)">Order on WhatsApp (+91 75618 57049)</span>
+                </a>
+                <button class="btn-qr-view" onclick="document.getElementById('openQrModalBtn').click()">
+                  <i class="fa-solid fa-qrcode"></i>
+                  <span data-en="View Counter QR" data-ml="കൗണ്ടർ QR കാണൂ">View Counter QR</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Mobile Bottom Bar -->
+  <div class="mobile-bottom-bar" id="mobileBottomBar">
+    <div class="bottom-bar-inner">
+      <button class="mobile-nav-item active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </button>
+      <button class="mobile-nav-item" onclick="document.getElementById('menuSection').scrollIntoView({behavior: 'smooth'})">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Menu</span>
+      </button>
+      <button class="mobile-nav-item" onclick="document.getElementById('langToggleBtn').click()">
+        <i class="fa-solid fa-language"></i>
+        <span id="mobileLangLabel">മലയാളം</span>
+      </button>
+      <button class="mobile-nav-item highlight-tray-btn" onclick="document.getElementById('openTrayBtn').click()">
+        <div class="mobile-tray-badge-wrap">
+          <i class="fa-solid fa-bowl-food"></i>
+          <span class="mobile-badge" id="mobileTrayCount">0</span>
+        </div>
+        <span>My Tray</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tray / Cart Slide-over Drawer -->
+  <div class="tray-drawer-backdrop" id="trayBackdrop"></div>
+  <aside class="tray-drawer" id="trayDrawer" aria-hidden="true">
+    <div class="tray-drawer-header">
+      <div class="tray-drawer-title">
+        <i class="fa-solid fa-bowl-food text-success"></i>
+        <div>
+          <h3 data-en="Your Fitspoon Tray" data-ml="നിങ്ങളുടെ ഫിറ്റ്സ്പൂൺ ട്രേ">Your Fitspoon Tray</h3>
+          <span class="tray-subtitle" data-en="Fresh bowls selected for order" data-ml="ഓർഡറിനായി തിരഞ്ഞെടുത്തവ">Fresh bowls selected for order</span>
+        </div>
+      </div>
+      <button class="close-drawer-btn" id="closeTrayBtn" aria-label="Close Tray">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="tray-drawer-body" id="trayDrawerBody">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <div class="tray-drawer-footer" id="trayDrawerFooter">
+      <div class="tray-subtotal-row">
+        <span data-en="Total Amount:" data-ml="ആകെ തുക:">Total Amount:</span>
+        <span class="total-price" id="trayTotalPrice">₹0</span>
+      </div>
+      <div class="tray-action-buttons">
+        <button class="btn-checkout-whatsapp" id="whatsappCheckoutBtn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span data-en="Send Order via WhatsApp" data-ml="വാട്സാപ്പിൽ ഓർഡർ ചെയ്യുക">Send Order via WhatsApp</span>
+        </button>
+        <button class="btn-token-display" id="showTokenBtn">
+          <i class="fa-solid fa-receipt"></i>
+          <span data-en="Show Counter Token Screen" data-ml="കൗണ്ടർ ടോക്കൺ കാണിക്കുക">Show Counter Token Screen</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-backdrop" id="productModalBackdrop"></div>
+  <div class="product-modal" id="productModal" role="dialog" aria-hidden="true">
+    <button class="modal-close-btn" id="closeProductModalBtn" aria-label="Close modal">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="modal-content-wrap" id="modalDynamicContent">
+      <!-- Injected by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Counter QR Standee Modal for the Owner / Stalls -->
+  <div class="modal-backdrop" id="qrModalBackdrop"></div>
+  <div class="qr-standee-modal" id="qrStandeeModal" role="dialog" aria-hidden="true">
+    <button class="modal-close-btn" id="closeQrModalBtn" aria-label="Close QR Standee">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="qr-standee-paper" id="printableQrStandee">
+      <div class="standee-header">
+        <div class="standee-emblem">
+          <i class="fa-solid fa-dumbbell"></i>
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <h2 class="standee-brand">Fitspoon</h2>
+        <span class="standee-motto">MADE FOR YOU GAIN</span>
+      </div>
+      
+      <div class="standee-callout">
+        <span class="standee-pill">📱 SCAN FOR DIGITAL MENU</span>
+        <h3>Scan to View Fresh Bowls & Prices</h3>
+        <p>Explore full ingredients, protein macros & custom chef dressings</p>
+      </div>
+
+      <div class="standee-qr-frame">
+        <img src="images/fitspoon_banner.jpg" alt="Fitspoon Counter QR" class="standee-qr-image" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Ffitspoon.com'">
+      </div>
+
+      <div class="standee-footer-tags">
+        <span>🥗 100% Fresh Daily</span>
+        <span>💪 20g-30g High Protein</span>
+        <span>⚡ Regular ₹99+</span>
+      </div>
+    </div>
+
+    <div class="standee-actions-bar">
+      <button class="btn-print-standee" onclick="window.print()">
+        <i class="fa-solid fa-print"></i>
+        <span>Print Counter Standee</span>
+      </button>
+      <button class="btn-close-standee" onclick="document.getElementById('closeQrModalBtn').click()">
+        Done
+      </button>
+    </div>
+  </div>
+
+  <!-- Big Counter Token Screen Modal -->
+  <div class="modal-backdrop" id="tokenModalBackdrop"></div>
+  <div class="token-modal" id="tokenModal" role="dialog" aria-hidden="true">
+    <button class="modal-close-btn" id="closeTokenModalBtn" aria-label="Close Token">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="token-card-box">
+      <span class="token-subtitle">COUNTER PICKUP TOKEN</span>
+      <div class="token-big-number" id="displayTokenNumber">#FS-42</div>
+      <div class="token-order-summary" id="displayTokenSummary">
+        <!-- Summary populated by JS -->
+      </div>
+      <p class="token-instruction">Please show this screen to the counter chef to prepare your fresh bowl.</p>
+      <button class="btn-token-done" onclick="document.getElementById('closeTokenModalBtn').click()">
+        Got It
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-notification" id="toastNotification">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Item added to your tray!</span>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-block">
+          <div class="brand-badge-icon">
+            <i class="fa-solid fa-dumbbell"></i>
+            <i class="fa-solid fa-leaf leaf-accent"></i>
+          </div>
+          <div class="brand-titles">
+            <span class="brand-name text-light">Fitspoon</span>
+            <span class="brand-tagline">Made for you gain</span>
+          </div>
+        </div>
+        <p class="footer-desc" data-en="Real nutrition for the everyday athlete and fitness enthusiast. No artificial preservatives, pure wholesome energy." data-ml="വ്യായാമം ചെയ്യുന്നവർക്കും ആരോഗ്യം ആഗ്രഹിക്കുന്നവർക്കും ആവശ്യമായ യഥാർത്ഥ പോഷക സമൃദ്ധമായ ബൗളുകൾ.">
+          Real nutrition for the everyday athlete and fitness enthusiast. No artificial preservatives, pure wholesome energy.
+        </p>
+      </div>
+
+      <div class="footer-timings-col">
+        <h4 data-en="Counter Timings" data-ml="കൗണ്ടർ സമയം">Counter Timings</h4>
+        <ul>
+          <li><strong>Morning:</strong> 6:30 AM – 11:00 AM (Breakfast & Pre/Post Workout)</li>
+          <li><strong>Evening:</strong> 4:30 PM – 9:30 PM (Evening Recharge & Dinner)</li>
+          <li style="margin-top: 8px;">
+            <a href="https://wa.me/917561857049" target="_blank" style="color: #4ade80; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-brands fa-whatsapp"></i> +91 75618 57049
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-prices-col">
+        <h4 data-en="Pricing Guide" data-ml="വില വിവരങ്ങൾ">Pricing Guide</h4>
+        <ul>
+          <li><span class="bullet-dot bg-regular"></span> <strong>Regular:</strong> ₹99 – ₹129</li>
+          <li><span class="bullet-dot bg-high"></span> <strong>High Protein:</strong> ₹149 – ₹179</li>
+          <li><span class="bullet-dot bg-prem"></span> <strong>Premium:</strong> ₹199 – ₹229</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Fitspoon • Made for you gain. Scan & Dine QR Menu.</p>
+        <p class="tag-powered">Freshly Crafted For You</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
